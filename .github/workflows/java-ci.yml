@@ -11,7 +11,7 @@ jobs:
         
       - name: Java 21 Configuration
         uses: actions/setup-java@v5
-        wiht:
+        with:
           distribution: temurin
           java-version: "21"
           
@@ -31,6 +31,6 @@ jobs:
         
       - name: Upload artefact to GitHub
         uses: actions/upload-artifact@v5
-        wiht:
+        with:
           name: calculadora-jar
           path: out/Calculadora.jar
