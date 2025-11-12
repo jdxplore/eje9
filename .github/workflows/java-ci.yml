@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone code
-        uses: actions/chekout@v5
+        uses: actions/chekout@v4
         
       - name: Java 21 Configuration
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
@@ -30,7 +30,7 @@ jobs:
         run: java -jar out/Claculadora.jar
         
       - name: Upload artefact to GitHub
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: calculadora-jar
           path: out/Calculadora.jar
