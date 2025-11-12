@@ -1,38 +1,36 @@
-name: Java CI con test y artefacto 
-
-on: [push, pull_request]
-
-jobs: 
-   build-and-run:
-     runs-on: ubuntu-latest
-     
-     steps:
-       - name: Clone code 
+name: Java CI con test y artefacto
+on:
+  - push
+  - pull_request
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone code
         uses: actions/chekout@v5
         
-       - name: Java 21 Configuration 
+      - name: Java 21 Configuration
         uses: actions/setup-java@v5
-        wiht: 
-          distribution: 'temurin'
-          java-version: '21'
-        
-       - name: Compile an save code in directory out
+        wiht:
+          distribution: temurin
+          java-version: "21"
+          
+      - name: Compile an save code in directory out
         run: javac -d out src/*.java
         
-       - name: Execute Tests wiht asserts 
+      - name: Execute Tests wiht asserts
         run: java -cp out CalculadoraTest
-    
-       - name: Create jar executable 
+        
+      - name: Create jar executable
         run: |
-            cd out 
-            jar cfe Calculadora.jar Main *.class
-            
-       - name: Try execution of jar 
-        run: java -jar out/Claculadora.jar 
+          cd out 
+          jar cfe Calculadora.jar Main *.class
+          
+      - name: Try execution of jar
+        run: java -jar out/Claculadora.jar
         
-        
-       - name: Upload artefact to GitHub
+      - name: Upload artefact to GitHub
         uses: actions/upload-artifact@v5
         wiht:
           name: calculadora-jar
-          path: out/Calculadora.jar 
+          path: out/Calculadora.jar
