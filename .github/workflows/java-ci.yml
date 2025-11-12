@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone code
-        uses: actions/chekout@v4
+        uses: actions/checkout@v4
         
       - name: Java 21 Configuration
         uses: actions/setup-java@v4
@@ -27,10 +27,10 @@ jobs:
           jar cfe Calculadora.jar Main *.class
           
       - name: Try execution of jar
-        run: java -jar out/Claculadora.jar
+        run: java -jar out/Calculadora.jar
         
       - name: Upload artefact to GitHub
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: calculadora-jar
           path: out/Calculadora.jar
